@@ -11,6 +11,30 @@ var uniqueId = (function() {
         return uniqueId++;
     };
 })();
+
+if (!Function.prototype.bind) {
+    Function.prototype.bind = function (oThis) {
+        if (typeof this !== "function") {
+            // closest thing possible to the ECMAScript 5 internal IsCallable function
+            throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+        }
+
+        var aArgs = Array.prototype.slice.call(arguments, 1),
+            fToBind = this,
+            fNOP = function () {},
+            fBound = function () {
+                return fToBind.apply(this instanceof fNOP && oThis
+                    ? this
+                    : oThis,
+                    aArgs.concat(Array.prototype.slice.call(arguments)));
+            };
+
+        fNOP.prototype = this.prototype;
+        fBound.prototype = new fNOP();
+
+        return fBound;
+    };
+}
 	
 
 var Instance = (function(){
@@ -130,6 +154,7 @@ var Instance = (function(){
     var Nexus = function() {
         this.id = uniqueId();
         this.callback = null;
+        this.listener = null;
     };
 
     /**
@@ -344,27 +369,19 @@ var Instance = (function(){
      *  observerable method, must be string
      * @param {Object} object
      *  valid object which contains 'method'
-     * @param {Boolean} strict @deprecated
-     *  strict observe object and invoke at it context or allow child objects
      * @param {String|Function} [accessor]
      *  callback function
      * @param {Object|undefined} [context]
      *  callback context
      */
-    Instance.fn.observer = function(method, object, strict, accessor, context) {
+    Instance.fn.observer = function(method, object, accessor, context) {
         if ( !(method in object) ) {
             throw new Error('Method ' + method + ' not exists');
-        }
-
-        if (typeof strict != "boolean") {
-            context = accessor;
-            accessor = strict;
         }
 
         var nexus = this.getNexus();
         var listener = this.getListener(method, object);
         listener.addObserver(nexus);
-
 
         if (accessor) {
             nexus.setCallback(accessor, context);

@@ -3,7 +3,7 @@
  * User: Evgeny Shpilevsky
  * Date: 2/6/12
  */
-var Dict = (function($){
+var Dict = (function(){
 
     /**
      * @constructor
@@ -68,8 +68,8 @@ var Dict = (function($){
         var dict = this.dict;
         var keys = [];
 
-        for(var key in keys) {
-            if (keys.hasOwnProperty(key)) {
+        for(var key in dict) {
+            if (dict.hasOwnProperty(key)) {
                 keys.push(key);
             }
         }
@@ -132,7 +132,7 @@ var Dict = (function($){
      */
     Dict._getWidgetConfig = function() {
         if (typeof this.widgetConfig == "function") {
-            var config = config();
+            var config = this.widgetConfig();
         }
         else {
             config = this.widgetConfig;
@@ -173,4 +173,4 @@ var Dict = (function($){
     };
 
     return DictModel;
-});
+})();

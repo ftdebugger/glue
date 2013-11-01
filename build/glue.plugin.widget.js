@@ -5,7 +5,6 @@
 
 	
 /**
- * Created for vuvu.tv.
  * User: Evgeny Shpilevsky
  * Date: 2/6/12
  */
@@ -93,7 +92,7 @@ var List = (function(){
  * User: Evgeny Shpilevsky
  * Date: 2/6/12
  */
-var Dict = (function($){
+var Dict = (function(){
 
     /**
      * @constructor
@@ -158,8 +157,8 @@ var Dict = (function($){
         var dict = this.dict;
         var keys = [];
 
-        for(var key in keys) {
-            if (keys.hasOwnProperty(key)) {
+        for(var key in dict) {
+            if (dict.hasOwnProperty(key)) {
                 keys.push(key);
             }
         }
@@ -222,7 +221,7 @@ var Dict = (function($){
      */
     Dict._getWidgetConfig = function() {
         if (typeof this.widgetConfig == "function") {
-            var config = config();
+            var config = this.widgetConfig();
         }
         else {
             config = this.widgetConfig;
@@ -263,13 +262,13 @@ var Dict = (function($){
     };
 
     return DictModel;
-});
+})();
 
 	
 /**
  * @return {Function}
  */
-var widget = !function(){
+var widget = (function(){
 
     var Widget;
 
@@ -288,6 +287,10 @@ var widget = !function(){
         var f = function () {};
         f.prototype = Widget.prototype;
         view.prototype = new f();
+
+        view.extend = function(methods) {
+            $.extend(view.prototype, methods);
+        };
 
         return view;
     };
@@ -346,7 +349,7 @@ var widget = !function(){
 
         // Clear glue reference
         if (this.glue) {
-            this.glue.clear();
+            this.glue.destroy();
         }
 
         // Destroy all lists
@@ -572,7 +575,7 @@ var widget = !function(){
     };
 
     return glue.fn.createWidget;
-}();
+})();
 
 	
         return widget;

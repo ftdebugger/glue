@@ -1,7 +1,7 @@
 /**
  * @return {Function}
  */
-var widget = !function(){
+var widget = (function(){
 
     var Widget;
 
@@ -20,6 +20,10 @@ var widget = !function(){
         var f = function () {};
         f.prototype = Widget.prototype;
         view.prototype = new f();
+
+        view.extend = function(methods) {
+            $.extend(view.prototype, methods);
+        };
 
         return view;
     };
@@ -78,7 +82,7 @@ var widget = !function(){
 
         // Clear glue reference
         if (this.glue) {
-            this.glue.clear();
+            this.glue.destroy();
         }
 
         // Destroy all lists
@@ -304,4 +308,4 @@ var widget = !function(){
     };
 
     return glue.fn.createWidget;
-}();
+})();

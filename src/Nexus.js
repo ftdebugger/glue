@@ -7,6 +7,7 @@
     var Nexus = function() {
         this.id = uniqueId();
         this.callback = null;
+        this.listener = null;
     };
 
     /**

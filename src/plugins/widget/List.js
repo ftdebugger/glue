@@ -1,5 +1,4 @@
 /**
- * Created for vuvu.tv.
  * User: Evgeny Shpilevsky
  * Date: 2/6/12
  */

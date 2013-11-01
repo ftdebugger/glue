@@ -38,6 +38,16 @@ function buildWidget() {
 	uglify  ${PLUGIN} "${BUILD}/glue.plugin.widget.min.js"
 }
 
+function buildModel() {
+    PLUGIN="${BUILD}/glue.plugin.model.js"
+
+	outTo "src/plugins/model/resources/_header.js" ${PLUGIN}
+    outTo "src/plugins/model/Model.js" ${PLUGIN}
+	outTo "src/plugins/model/resources/_footer.js" ${PLUGIN}
+
+	uglify  ${PLUGIN} "${BUILD}/glue.plugin.model.min.js"
+}
+
 function clean() {
 	rm -f build/*
 }
@@ -46,6 +56,7 @@ function build() {
     clean
     buildCore
     buildWidget
+    buildModel
 }
 
 build
