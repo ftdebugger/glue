@@ -3,7 +3,6 @@
     var plugin = function($, glue){
 
 
-	
 /**
  * User: Evgeny Shpilevsky
  * Date: 2/6/12
@@ -86,7 +85,6 @@ var List = (function(){
     return ListModel;
 
 })();
-	
 /**
  * Created for vuvu.tv.
  * User: Evgeny Shpilevsky
@@ -264,7 +262,6 @@ var Dict = (function(){
     return DictModel;
 })();
 
-	
 /**
  * @return {Function}
  */
@@ -577,7 +574,6 @@ var widget = (function(){
     return glue.fn.createWidget;
 })();
 
-	
         return widget;
     };
     
@@ -588,4 +584,3 @@ var widget = (function(){
         plugin(this.jQuery, this.glue);
     }
 }();
-	

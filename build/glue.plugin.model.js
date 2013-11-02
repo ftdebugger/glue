@@ -3,7 +3,6 @@
     var plugin = function($, glue){
 
 
-	
 /**
  * User: Evgeny Shpilevsky
  * Date: 2/6/12
@@ -120,7 +119,6 @@ var model = (function(){
      */
     return glue.createModel;
 });
-	
         return model;
     };
     
@@ -131,4 +129,3 @@ var model = (function(){
         plugin(this.jQuery, this.glue)();
     }
 }();
-	
