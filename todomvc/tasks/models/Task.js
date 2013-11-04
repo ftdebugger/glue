@@ -4,7 +4,8 @@ define(function(){
      * @constructor
      */
     var TaskModel = function(config) {
-        this.title = ""
+        this.title = "";
+
         $.extend(this, config);
     };
 

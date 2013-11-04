@@ -1,7 +1,6 @@
 define([
         'jquery',
-        'glue/widget',
-        'tasks/widgets/template'
+        'glue/widget'
     ],
 function($, Widget, template) {
 
@@ -21,7 +20,7 @@ function($, Widget, template) {
      * Render view
      */
     Task.render = function() {
-        this.dom = $(this.template.task().supplant(this.model));
+        this.dom = $(Mustache.render($("#task").text(), this.model));
 
         this._initEvents();
         this.refresh();
@@ -33,7 +32,7 @@ function($, Widget, template) {
      * Refresh
      */
     Task.refresh = function() {
-
+        this.find(".title").text(this.model.title);
     };
 
     Task.editMode = function() {
@@ -45,8 +44,8 @@ function($, Widget, template) {
      */
     Task.normalMode = function() {
         this.dom.removeClass('editing');
-        this.model.title = this.find("edit-box").val();
-        this.model.save();
+        this.model.title = this.find(".edit-box").val();
+        this.tasks.save();
     };
 
     /**
@@ -67,6 +66,8 @@ function($, Widget, template) {
                 self.normalMode();
             }
         });
+
+        this.glue.observer('save', this.tasks, this.refresh, this);
     };
 
     return TaskView;

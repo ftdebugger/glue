@@ -6,9 +6,7 @@
 define([
         'jquery',
         'glue/widget',
-        'tasks/widgets/Task',
-        'tasks/widgets/template',
-        'lib/supplant'
+        'tasks/widgets/Task'
     ],
 function($, Widget, TaskView, template) {
 
@@ -17,7 +15,11 @@ function($, Widget, TaskView, template) {
      */
     var TasksView = Widget(function() {
         this.template = template;
-        this.tasks = this.widgetDict(TaskView);
+        this.tasks = this.widgetDict(TaskView, {
+            widgetConfig: {
+                tasks: this.model
+            }
+        });
     });
 
     /**
@@ -29,7 +31,7 @@ function($, Widget, TaskView, template) {
      * Render view
      */
     Tasks.render = function() {
-        this.dom = $(this.template.main().supplant(this.model));
+        this.dom = $(Mustache.render($("#main").text(), this.model));
 
         this._initEvents();
         this.refresh();
