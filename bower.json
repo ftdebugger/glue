@@ -1,0 +1,9 @@
+{
+    "name": "glue pages",
+    "dependencies": {
+        "underscore":   "~1.5.2",
+        "jquery":       "~2.0.3",
+        "mustache":     "~0.7.2",
+        "glue.js":      "~1.0.0"
+    }
+}
