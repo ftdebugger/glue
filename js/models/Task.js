@@ -31,7 +31,7 @@ var TaskModel = glue.createModel(function(){
  * Save tasks
  */
 TaskModel.save = function() {
-    var tasks = this.models.map(function(task){
+    var tasks = this.map(function(task){
         return task.toJSON();
     });
 
@@ -52,7 +52,7 @@ TaskModel.load = function() {
  * @returns {Array}
  */
 TaskModel.getDone = function() {
-    return _.where(this.models, {done: true});
+    return this.where({done: true});
 };
 
 /**

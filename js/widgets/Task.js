@@ -62,5 +62,7 @@ var TaskWidget = glue.createWidget()
                 }
             });
 
+            this.click(".destroy", this.model.destroy, this.model);
+
         }
     });

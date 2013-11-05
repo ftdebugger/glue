@@ -8,13 +8,13 @@ module.exports = function (grunt) {
                 files: [
                     {
                         src: [
-                            'src/resources/_header.js',
-                            'src/glue.js',
-                            'src/Instance.js',
-                            'src/Listener.js',
-                            'src/Nexus.js',
-                            'src/Observer.js',
-                            'src/resources/_footer.js'
+                            'src/core/resources/_header.js',
+                            'src/core/glue.js',
+                            'src/core/Instance.js',
+                            'src/core/Listener.js',
+                            'src/core/Nexus.js',
+                            'src/core/Observer.js',
+                            'src/core/resources/_footer.js'
                         ],
                         dest: 'build/glue.js'
                     }
@@ -53,9 +53,20 @@ module.exports = function (grunt) {
                 files: [
                     {
                         src: [
-                            "src/plugins/mustache/Mustache.js",
+                            "src/plugins/mustache/Mustache.js"
                         ],
                         dest: 'build/glue.plugin.mustache.js'
+                    }
+                ]
+            },
+
+            "underscore": {
+                files: [
+                    {
+                        src: [
+                            "src/plugins/underscore/Underscore.js"
+                        ],
+                        dest: 'build/glue.plugin.underscore.js'
                     }
                 ]
             }
@@ -77,6 +88,10 @@ module.exports = function (grunt) {
             mustache: {
                 src: 'build/glue.plugin.mustache.js',
                 dest: 'build/glue.plugin.mustache.min.js'
+            },
+            underscore: {
+                src: 'build/glue.plugin.underscore.js',
+                dest: 'build/glue.plugin.underscore.min.js'
             }
         }
     });
