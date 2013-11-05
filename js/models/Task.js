@@ -42,7 +42,7 @@ TaskModel.save = function() {
  * Load tasks
  */
 TaskModel.load = function() {
-    var tasks = window.localStorage.getItem('tasks') || '{}';
+    var tasks = window.localStorage.getItem('tasks') || '[]';
 
     tasks = JSON.parse(tasks);
     return tasks.forEach(TaskModel, this);
