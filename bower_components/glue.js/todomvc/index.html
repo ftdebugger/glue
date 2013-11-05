@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todos</title>
+
+    <link rel="stylesheet" href="css/application.css" type="text/css" charset="utf-8">
+
+    <script src="../bower_components/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../bower_components/mustache/mustache.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../bower_components/underscore/underscore-min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="../build/glue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../build/glue.plugin.widget.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../build/glue.plugin.model.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../build/glue.plugin.mustache.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="models/Task.js" type="text/javascript" charset="utf-8"></script>
+    <script src="widgets/Task.js" type="text/javascript" charset="utf-8"></script>
+    <script src="widgets/Tasks.js" type="text/javascript" charset="utf-8"></script>
+    <script src="index.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/template" id="template-main">
+        <div>
+            <h1>Todos</h1>
+            <form><input type="text" class="task-title" placeholder="What needs to be done?"></form>
+            <div class="items"></div>
+            <footer>
+                <a class="clear">Clear completed</a>
+                <div class="count"><span class="countVal">{{left}}</span> left</div>
+            </footer>
+        </div>
+    </script>
+
+    <script type="text/template" id="template-task">
+        <div class="item">
+            <div class="view" title="Double click to edit...">
+                <input type="checkbox" class="done" {{#done}}checked="checked"{{/done}}>
+                <span class="title">{{title}}</span> <a class="destroy"></a>
+            </div>
+
+            <div class="edit">
+                <input type="text" class="edit-box" value="{{title}}">
+            </div>
+        </div>
+    </script>
+</head>
+<body>
+<div id="views">
+    <div id="tasks"></div>
+</div>
+</body>
+</html>

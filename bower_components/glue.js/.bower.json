@@ -1,0 +1,30 @@
+{
+  "name": "glue",
+  "version": "1.0.0",
+  "authors": [
+    "Evgeny Shpilevsky <evgeny@shpilevsky.com>"
+  ],
+  "main": "build/glue.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "devDependencies": {
+    "underscore": "*",
+    "jquery": "*",
+    "mustache": "*"
+  },
+  "homepage": "https://github.com/ftdebugger/glue",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "4c3d5ee6ce965dd728e548aa54118d6b7101c407"
+  },
+  "_source": "git://github.com/ftdebugger/glue.git",
+  "_target": "~1.0.0",
+  "_originalSource": "glue.js"
+}

@@ -1,0 +1,20 @@
+{
+    "name": "glue",
+    "version": "1.0.0",
+    "authors": [
+        "Evgeny Shpilevsky <evgeny@shpilevsky.com>"
+    ],
+    "main": "build/glue.js",
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "tests"
+    ],
+    "devDependencies": {
+        "underscore": "*",
+        "jquery": "*",
+        "mustache": "*"
+    }
+}
