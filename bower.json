@@ -15,7 +15,6 @@
     "dependencies": {
         "underscore": "*",
         "jquery": "*",
-        "mustache": "*",
-        "requirejs": "*"
+        "mustache": "*"
     }
 }

@@ -65,7 +65,7 @@ var Instance = (function(){
      * @return {Number}
      */
     Instance.fn.getObjectId = function(object) {
-        var idString = '__glue_object_id';
+        var idString = '##glueObjectId##';
 
         if (!object[idString]) {
             object[idString] = uniqueId();

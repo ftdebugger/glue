@@ -7,39 +7,34 @@
 
     <script src="../bower_components/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="../bower_components/mustache/mustache.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../bower_components/requirejs/require.js" type="text/javascript" charset="utf-8" data-main="index"></script>
+    <script src="../bower_components/underscore/underscore-min.js" type="text/javascript" charset="utf-8"></script>
 
     <script src="../build/glue.js" type="text/javascript" charset="utf-8"></script>
     <script src="../build/glue.plugin.widget.js" type="text/javascript" charset="utf-8"></script>
     <script src="../build/glue.plugin.model.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../build/glue.plugin.mustache.js" type="text/javascript" charset="utf-8"></script>
 
-    <script>
-        requirejs({
-            baseUrl:'/todomvc/',
-            paths:{
-                'jquery':'http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min',
-                'glue': '../../build/glue',
-                'glue/widget': '../../build/glue.plugin.widget'
-            }
-        });
-    </script>
+    <script src="models/Task.js" type="text/javascript" charset="utf-8"></script>
+    <script src="widgets/Task.js" type="text/javascript" charset="utf-8"></script>
+    <script src="widgets/Tasks.js" type="text/javascript" charset="utf-8"></script>
+    <script src="index.js" type="text/javascript" charset="utf-8"></script>
 
-    <script type="text/template" id="main">
+    <script type="text/template" id="template-main">
         <div>
             <h1>Todos</h1>
             <form><input type="text" class="task-title" placeholder="What needs to be done?"></form>
             <div class="items"></div>
             <footer>
                 <a class="clear">Clear completed</a>
-                <div class="count"><span class="countVal"></span> left</div>
+                <div class="count"><span class="countVal">{{left}}</span> left</div>
             </footer>
         </div>
     </script>
 
-    <script type="text/template" id="task">
-        <div class="item {#done}done{/done}">
+    <script type="text/template" id="template-task">
+        <div class="item">
             <div class="view" title="Double click to edit...">
-                <input type="checkbox" {#done}checked="checked"{/done}>
+                <input type="checkbox" class="done" {{#done}}checked="checked"{{/done}}>
                 <span class="title">{{title}}</span> <a class="destroy"></a>
             </div>
 

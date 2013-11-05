@@ -70,4 +70,8 @@ describe('widget', function() {
         expect(widget.dom.text()).toBe('clicked');
     });
 
+    it('should return constructor after invoke extend', function(){
+        var Widget = glue.createWidget();
+        expect(Widget.extend({})).toBe(Widget);
+    })
 });

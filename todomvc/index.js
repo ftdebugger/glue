@@ -1,9 +1,8 @@
-define(['jquery', 'tasks/models/Tasks', 'tasks/widgets/Tasks'], function($, Tasks, TasksWidget){
-    var tasks = new Tasks();
-    tasks.load();
+$(function () {
+    var tasks = TaskModel.load();
 
     var widget = new TasksWidget({
-        model: tasks
+        model: TaskModel
     });
 
     $("#tasks").append(widget.render());

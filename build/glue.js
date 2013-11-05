@@ -101,7 +101,7 @@ var Instance = (function(){
      * @return {Number}
      */
     Instance.fn.getObjectId = function(object) {
-        var idString = '__glue_object_id';
+        var idString = '##glueObjectId##';
 
         if (!object[idString]) {
             object[idString] = uniqueId();
@@ -370,6 +370,16 @@ var Instance = (function(){
      *  callback context
      */
     Instance.fn.observer = function(method, object, accessor, context) {
+        if ( !object ) {
+            throw new Error('Object passed to observer have unsupported type "' + (typeof object) + '"');
+        }
+
+        if (method instanceof Array) {
+            return method.map(function(method){
+                return this.observer(method, object, accessor, context);
+            }, this)
+        }
+
         if ( !(method in object) ) {
             throw new Error('Method ' + method + ' not exists');
         }
@@ -388,6 +398,10 @@ var Instance = (function(){
 })(Instance);
     var glue = new Instance();
     glue.fn = Instance.fn;
+
+    glue.util = {
+        uniqueId: uniqueId
+    };
 
 //    glue.Instance = Instance;
 

@@ -47,6 +47,17 @@ module.exports = function (grunt) {
                         dest: 'build/glue.plugin.model.js'
                     }
                 ]
+            },
+
+            "mustache": {
+                files: [
+                    {
+                        src: [
+                            "src/plugins/mustache/Mustache.js",
+                        ],
+                        dest: 'build/glue.plugin.mustache.js'
+                    }
+                ]
             }
         },
 
@@ -62,6 +73,10 @@ module.exports = function (grunt) {
             model: {
                 src: 'build/glue.plugin.model.js',
                 dest: 'build/glue.plugin.model.min.js'
+            },
+            mustache: {
+                src: 'build/glue.plugin.mustache.js',
+                dest: 'build/glue.plugin.mustache.min.js'
             }
         }
     });
