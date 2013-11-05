@@ -7,6 +7,20 @@ var model = (function () {
     "use strict";
 
     /**
+     * @class
+     */
+    var Model = glue.fn.Model = function (config) {
+        $.extend(this, config);
+        var id = glue.getObjectId(this);
+        this.constructor.attachModel(this);
+    };
+
+    /**
+     * @type {{}}
+     */
+    Model.helpers = {};
+
+    /**
      * Convert my_var_name to MyVarName
      * @param {String} name
      * @return {String}
@@ -22,13 +36,6 @@ var model = (function () {
      */
     var classHelpers = function (constructor) {
         var prototype = constructor.prototype;
-
-        /**
-         * Create fac
-         */
-        constructor.factory = function (config) {
-            return new constructor(config);
-        };
 
         /**
          * Create setter for 'name' like 'setName'
@@ -134,6 +141,8 @@ var model = (function () {
             return constructor;
         };
 
+        $.extend(constructor, Model.helpers);
+
         /**
          * Detach model from collection,
          * destroy glue
@@ -160,15 +169,6 @@ var model = (function () {
             return this.glue;
         };
 
-    };
-
-    /**
-     * @class
-     */
-    var Model = glue.fn.Model = function (config) {
-        $.extend(this, config);
-        var id = glue.getObjectId(this);
-        this.constructor.attachModel(this);
     };
 
     /**
